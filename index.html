@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Tarefas</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <!-- fim do mesmo -->
+</head>
+<body>
+    <div class="titulo">
+        <div id="botao_criar">
+            <button id="adicionar" onclick="adicionar()">Criar nova tarefa</button>
+        </div>
+        <h1 id="titulo_lista_tarefas">Lista de Tarefas</h1>
+    </div>
+
+    <section>
+        <table>
+            <thead>
+                <tr>
+                    <th>Titulo</th>
+                    <th>Prazo</th>
+                    <th>Tarefas</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                
+            </tbody>
+        </table>
+    </section>
+
+    <div id="container-modal">
+        <form id="form-modal" onsubmit="return false">
+            <h2>Preencha os dados da tarefa abaixo</h2>
+            <div class="form-group">
+                <input type="text" name="titulo" maxlength="30" id="titulo" placeholder="Digite um título para a tarefa">
+               
+            </div>
+
+            <div class="form-group">
+                <input type="text" name="data" id="data" maxlength="10" placeholder="Digite uma data. Ex: xx/xx/xxxx" >
+               
+            </div>
+
+            <div class="form-group">
+              
+                <textarea name="texto" id="texto" rows="4" maxlength="200"  placeholder="Digite a descrição da tarefa aqui..."></textarea>
+            </div>
+                
+            <div class="button-group">
+                <button onclick="salvar()" id="Salvar">Salvar</button>
+                <button onclick="cancelar()" class="cancelar">Cancelar</button>
+            </div>
+        </form>
+     </div>
+     <div id="celebrar">
+        <div id="elementos_celebrar">
+             <h1>Parabéns, mais uma tarefa concluida!</h1>
+        <button onclick="celebre()" class="celebre">Celebre</button>
+        </div>
+     </div>
+    
+     <script src="js/app.js"></script>
+</body>
+</html>
