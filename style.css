@@ -79,6 +79,18 @@ button:hover{
     color: #fff;
     border: 1px #ffff solid;
 }
+#visualizar{
+    display: none;
+    background-color:#4b1046; 
+    color: #fff;
+    border: 1px #fff solid;
+}
+#visualizar:hover{
+   
+    background-color:#841C7B; 
+    color: #fff;
+    border: 1px #fff solid;
+}
 #alterar, #Salvar{
     background-color: #002E51;
     color: white;
@@ -95,6 +107,9 @@ button:hover{
     color: #fff;
     border: 1px #ffffff solid;
 }
+.celebre{
+    margin-bottom: 15px;
+}
 .celebre:hover, #concluir:hover{
     background-color:  #32A250;
     color: #fff;
@@ -107,15 +122,17 @@ button:hover{
     text-align: center;
     position: absolute;
     top: 5rem;
-    
 }
 #elementos_celebrar{
     display: flex;
     flex-direction: column;
     text-align: center;
     align-items: center;
-    width: 100%;
-    background-color: #212429;
+    width: 48em;
+    background-color: #174B24;
+    margin: auto;
+    border-radius: 10px;
+    box-shadow:  5px 5px 5px 3px #32A250;
 }
 
 section{
@@ -126,13 +143,17 @@ section{
 table{
     flex: 1;
 }
-td {
+td{
     text-align: center;  
     word-wrap: break-word; /* Permite quebra de palavras */
     overflow-wrap: break-word; /* Para compatibilidade com navegadores */
     max-width: 150px; /* Define uma largura máxima para a célula */
     margin-top: 10px;
 }   
+td button{
+    font-size: 1.2em;
+    width: 5em;
+}
 tbody tr:hover{
     background-color: #4C4E69;
 }
@@ -168,7 +189,7 @@ tbody tr:hover{
     align-items: center; 
 }
 input{
-    height: 2rem; 
+    height: 2rem;
     border: none;
     border-bottom: 1px solid white;
     cursor: text;
@@ -207,6 +228,7 @@ textarea {
     font-family: "Poppins", sans-serif;
     font-weight: 200;
     font-style: normal;
+    text-align: center;
 }
 
 @media (max-width: 625px) {
@@ -227,6 +249,20 @@ textarea {
     .form-group{
         height: 20%;
     }
+    .td_mobile{
+        display: none;
+    }
+    #visualizar{
+        display: inline;
+    }
+    td{
+        padding-top: 1em;
+    }
+    #elementos_celebrar{
+        width: 40em;
+        margin: 10px;
+    }
+  
 }
 
 @media (max-width: 430px) {
@@ -243,4 +279,26 @@ textarea {
         height: 8rem;
         font-size: 1.5rem;
     }
+    .td_mobile_aparece{
+        max-width: 5em;
+    }
+    #celebrar{
+        height: 100%;
+        top: 0rem;
+    }
+    #elementos_celebrar{
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        border-radius: 0px;
+        margin: 0px;
+    }
+    .celebre{
+        margin-bottom: 15px;
+        width: 15em;
+        font-size: 1.5em;;
+    }
 }
+
+
+

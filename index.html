@@ -6,6 +6,8 @@
     <title>Lista de Tarefas</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- icon -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
     <!-- google font -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
@@ -24,8 +26,8 @@
             <thead>
                 <tr>
                     <th>Titulo</th>
-                    <th>Prazo</th>
-                    <th>Tarefas</th>
+                    <th class="td_mobile">Prazo</th>
+                    <th class="td_mobile">Tarefas</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -63,10 +65,11 @@
      <div id="celebrar">
         <div id="elementos_celebrar">
              <h1>Parabéns, mais uma tarefa concluida!</h1>
-        <button onclick="celebre()" class="celebre">Celebre</button>
+             <button onclick="celebre()" class="celebre" id="animate_confetti">Celebre</button>
         </div>
      </div>
-    
      <script src="js/app.js"></script>
+     <script src="https://kit.fontawesome.com/3a136bbce7.js" crossorigin="anonymous"></script>
+     
 </body>
 </html>

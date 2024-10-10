@@ -25,6 +25,8 @@ function limparform(){
 }
 
 function cancelar(){
+    let salvar = document.getElementById("Salvar");
+    salvar.style.display = "inline-block";
     ocultarModal();
 }
 
@@ -52,10 +54,7 @@ function salvar(){
     ocultarModal();
     exibirDados();
 }
-function alterarstyle(){
-    let label = document.getElementsByClassName("label_form");
-    label.style.color = "#223A40";
-}
+
 function alterar(indice) {
     
     if (indice >= 0 && indice < tarefas.length) {
@@ -65,9 +64,12 @@ function alterar(indice) {
         document.getElementById("data").value = tarefa.data;
         document.getElementById("titulo").value = tarefa.titulo;
         tarefaAlterada = tarefa;
-       
+        document.getElementById("texto").disabled = false
+        document.getElementById("data").disabled = false
+        document.getElementById("titulo").disabled = false
+
         mostrarModal();
-        alterarstyle()
+        
     } else {
         console.error("Índice inválido.");
     }
@@ -104,20 +106,42 @@ function concluir(indice){
     }
 }
 
+function visualizar(indice) {
+    
+    if (indice >= 0 && indice < tarefas.length) {
+
+        let tarefa = tarefas[indice];
+        document.getElementById("texto").value = tarefa.texto;
+        document.getElementById("data").value = tarefa.data;
+        document.getElementById("titulo").value = tarefa.titulo;
+        tarefaAlterada = tarefa;
+        document.getElementById("texto").disabled = true
+        document.getElementById("data").disabled = true
+        document.getElementById("titulo").disabled = true
+        let salvar = document.getElementById("Salvar");
+        salvar.style.display = "none";
+        mostrarModal();
+      
+    } else {
+        console.error("Índice inválido.");
+    }
+}
+
 function exibirDados(){
     let tbody = document.querySelector("table tbody");
     tbody.innerHTML = ""; 
 
     for(let i = 0; i < tarefas.length; i++){
         let linha = `
-        <tr>
-            <td>${tarefas[i].titulo}</td>
-            <td>${tarefas[i].data}</td>
-            <td>${tarefas[i].texto}</td>
-            <td>
-                <button onclick="concluir(${i})" id="concluir">Concluir</button>
-                <button onclick="alterar(${i})" id="alterar">Alterar</button>
-                <button onclick="excluir('${i}')" id="excluir">Excluir</button>
+         <tr>
+            <td class="td_mobile_aparece">${tarefas[i].titulo}</td>
+            <td class="td_mobile">${tarefas[i].data}</td>
+            <td class="td_mobile">${tarefas[i].texto}</td>
+            <td class="td_mobile_aparece">
+                <button title="Concluir"  onclick="concluir(${i})" id="concluir"><i class="fa-regular fa-floppy-disk"></i></button>
+                <button title="Alterar"  onclick="alterar(${i})" id="alterar"><i class="fa-solid fa-pen"></i></button>
+                <button title="Visualizar"  onclick="visualizar(${i})" id="visualizar"><i class="fa-regular fa-eye"></i></button>
+                <button title="Excluir"  onclick="excluir('${i}')" id="excluir"><i class="fa-solid fa-trash"></i></button>
             </td>
         </tr>`;
         
@@ -132,3 +156,24 @@ function celebre(){
     let celebre = document.getElementById("celebrar");
     celebre.style.display = "none";
 }
+
+//confetes
+document.getElementById("animate_confetti").addEventListener("click", () => {
+    
+    let params = {
+        particleCount: 500, // Quantidade de confetes
+        spread: 90, // O quanto eles se espalham
+        startVelocity: 70, // Velocidade inicial
+        origin: { x: 0, y: 0.5 }, // Posição inicial na tela
+        angle: 45 // Ângulo em que os confetes serão lançados
+    };
+
+    // Joga confetes da esquerda pra direita
+    confetti(params);
+
+    // Joga confetes da direita para a esquerda
+    params.origin.x = 1;
+    params.angle = 135;
+    confetti(params);
+
+});
