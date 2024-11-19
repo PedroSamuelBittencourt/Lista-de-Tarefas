@@ -53,6 +53,7 @@ function salvar(){
     limparform();
     ocultarModal();
     exibirDados();
+    salvarNoLocalStorage();
 }
 
 function alterar(indice) {
@@ -177,3 +178,21 @@ document.getElementById("animate_confetti").addEventListener("click", () => {
     confetti(params);
 
 });
+
+// Função para salvar tarefas no localStorage
+function salvarNoLocalStorage() {
+    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+}
+
+// Função para carregar tarefas do localStorage
+function carregarDoLocalStorage() {
+    const tarefasSalvas = localStorage.getItem("tarefas");
+    if (tarefasSalvas) {
+        tarefas = JSON.parse(tarefasSalvas);
+        exibirDados();
+    }
+}
+
+window.onload = function() {
+    carregarDoLocalStorage();
+};
