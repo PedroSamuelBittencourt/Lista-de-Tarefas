@@ -90,7 +90,7 @@ function excluir(indice){
         if (indice >= 0 && indice < tarefas.length) {
             tarefas.splice(indice, 1); 
             exibirDados();
-            
+            salvarNoLocalStorage();
         } else {
             console.error("Índice inválido.");
         }
@@ -105,7 +105,7 @@ function concluir(indice){
             let celebre = document.getElementById("celebrar");
             celebre.style.display = "flex";
             exibirDados();
-           
+            salvarNoLocalStorage();
         } else {
             console.error("Índice inválido.");
         }
