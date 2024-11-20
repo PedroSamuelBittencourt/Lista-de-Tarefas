@@ -35,25 +35,34 @@ function salvar(){
     let texto = document.getElementById("texto").value;
     let titulo = document.getElementById("titulo").value;
 
-    if(tarefaAlterada == null){
-        let tarefa = { "titulo": titulo,
-                       "texto": texto,
-                       "data": data };
-                       
-        tarefas.push(tarefa);
-        console.log(tarefas);
-    } else {
-        tarefaAlterada.texto = texto;
-        tarefaAlterada.data = data;
-        tarefaAlterada.titulo = titulo;
+   
+    if(texto.trim() == "" || titulo.trim() == "" || data.trim() == ""){
+        showAlert();
+        return false
+    }else{
+
+        if(tarefaAlterada == null){
+            let tarefa = { "titulo": titulo,
+                           "texto": texto,
+                           "data": data };
+                           
+            tarefas.push(tarefa);
+            console.log(tarefas);
+        } else {
+            tarefaAlterada.texto = texto;
+            tarefaAlterada.data = data;
+            tarefaAlterada.titulo = titulo;
+        }
+
+        tarefaAlterada = null;
+        console.log(data, texto, titulo);
+        
+        limparform();
+        ocultarModal();
+        exibirDados();
+        salvarNoLocalStorage();
     }
     
-    tarefaAlterada = null;
-    console.log(data, texto, titulo);
-    limparform();
-    ocultarModal();
-    exibirDados();
-    salvarNoLocalStorage();
 }
 
 function alterar(indice) {
@@ -196,3 +205,11 @@ function carregarDoLocalStorage() {
 window.onload = function() {
     carregarDoLocalStorage();
 };
+
+function showAlert() {
+    document.getElementById('customAlert').style.display = 'block';
+}
+
+function closeAlert() {
+    document.getElementById('customAlert').style.display = 'none';
+}
